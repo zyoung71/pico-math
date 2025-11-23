@@ -7,7 +7,7 @@ if (NOT TARGET pico-math)
     )
 
     target_include_directories(pico-math INTERFACE
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src> 
     )
 
 endif()
