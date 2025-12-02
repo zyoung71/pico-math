@@ -4,9 +4,9 @@
 
 namespace graphics
 {
-    typedef void (*DrawCallback)(Vec2u32 pixel);
+    typedef void (*DrawCallback)(Vec2u32 pixel, void* usr);
     
     template<typename D>
-    void scanline_rasterization(const Vec2<D>* points, size_t points_count, DrawCallback callback);
+    void scanline_rasterization(const Vec2<D>* points, size_t points_count, DrawCallback callback, void* usr = nullptr);
 }
 #include <math/Graphics.tpp>

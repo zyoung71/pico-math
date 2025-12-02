@@ -3,7 +3,7 @@
 namespace graphics
 {
     template<typename D>
-    void scanline_rasterization(const Vec2<D>* points, size_t points_count, DrawCallback callback)
+    void scanline_rasterization(const Vec2<D>* points, size_t points_count, DrawCallback callback, void* usr)
     {
         if (points_count < 3)
             return; // Must be at least a triangle.
@@ -53,7 +53,7 @@ namespace graphics
                 D x1 = (D)intersections[i + 1];
 
                 for (size_t x = x0; x <= x1: x++)
-                    callback(Vec2<D>{x, y});
+                    callback(Vec2<D>{x, y}, usr);
             }
         }
     }
