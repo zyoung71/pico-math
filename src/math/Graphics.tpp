@@ -20,7 +20,7 @@ namespace graphics
 
         float intersections[points_count];
         size_t intersect_count;
-        for (int y = (int)ymin; y <= (int)ymax; y++)
+        for (uint32_t y = (uint32_t)ymin; y <= (uint32_t)ymax; y++)
         {
             intersect_count = 0;
 
@@ -52,7 +52,7 @@ namespace graphics
                 D x0 = (D)intersections[i];
                 D x1 = (D)intersections[i + 1];
 
-                for (size_t x = x0; x <= x1; x++)
+                for (uint32_t x = x0; x <= x1; x++)
                     callback(Vec2<D>{x, y}, usr);
             }
         }
