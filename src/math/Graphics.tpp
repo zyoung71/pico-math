@@ -52,7 +52,7 @@ namespace graphics
                 D x0 = (D)intersections[i];
                 D x1 = (D)intersections[i + 1];
 
-                for (size_t x = x0; x <= x1: x++)
+                for (size_t x = x0; x <= x1; x++)
                     callback(Vec2<D>{x, y}, usr);
             }
         }
