@@ -1,0 +1,46 @@
+#include <math/Vec3.h>
+
+#include <cmath>
+
+template<typename D>
+Vec3<D> Vec3<D>::operator+(const Vec3<D>& other) const
+{
+    return {x+other.x, y+other.y, z+other.z};
+}
+
+template<typename D>
+Vec3<D> Vec3<D>::operator-(const Vec3<D>& other) const
+{
+    return {x-other.x, y-other.y, z-other.z};
+}
+
+template<typename D>
+Vec3<D> Vec3<D>::operator*(D scale) const
+{
+    return {x*scale, y*scale, z*scale};
+}
+
+template<typename D>
+Vec3<D> Vec3<D>::operator/(D scale) const
+{
+    return {x/scale, y/scale, z/scale};
+}
+
+template<typename D>
+float Vec3<D>::Length() const
+{
+    return std::sqrt(x*x+y*y+z*z);
+}
+
+template<typename D>
+float Vec3<D>::Dot(const Vec3<D>& other) const
+{
+    return x*other.x + y*other.y + z*other.z;
+}
+
+template<typename D>
+Vec3<D> Vec3<D>::Normalize() const
+{
+    float len = Length();
+    return {x / len, y / len, z / len};
+}

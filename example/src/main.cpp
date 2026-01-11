@@ -3,11 +3,13 @@
 
 #include <math/Quat.h>
 #include <math/Graphics.h>
+#include <math/Vec3.h>
 
 int main()
 {
 
     Quatf q;
+    Vec3u32 v;
 
     graphics::scanline_rasterization<uint32_t>(nullptr, 0, nullptr, nullptr); // empty
 
