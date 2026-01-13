@@ -15,6 +15,11 @@ struct Vec2
     Vec2 operator*(D scale) const;
     Vec2 operator/(D scale) const;
 
+    Vec2& operator+=(const Vec2& other);
+    Vec2& operator-=(const Vec2& other);
+    Vec2& operator*=(D scale);
+    Vec2& operator/=(D scale);
+
     float Length() const;
     float Dot(const Vec2& other) const;
     Vec2 Normalize() const;

@@ -27,6 +27,38 @@ Vec2<D> Vec2<D>::operator/(D scale) const
 }
 
 template<typename D>
+Vec2<D>& Vec2<D>::operator+=(const Vec2<D>& other)
+{
+    x += other.x;
+    y += other.y;
+    return *this;
+}
+
+template<typename D>
+Vec2<D>& Vec2<D>::operator-=(const Vec2<D>& other)
+{
+    x -= other.x;
+    y -= other.y;
+    return *this;
+}
+
+template<typename D>
+Vec2<D>& Vec2<D>::operator*=(D scale)
+{
+    x *= scale;
+    y *= scale;
+    return *this;
+}
+
+template<typename D>
+Vec2<D>& Vec2<D>::operator/=(D scale)
+{
+    x /= scale;
+    y /= scale;
+    return *this;
+}
+
+template<typename D>
 float Vec2<D>::Length() const
 {
     return std::sqrt(x*x+y*y);
