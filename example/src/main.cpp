@@ -7,7 +7,6 @@
 
 int main()
 {
-
     Quatf q;
     Vec3u32 v;
 
@@ -15,8 +14,12 @@ int main()
 
     graphics::scanline_rasterization<uint32_t>(nullptr, 0, nullptr, nullptr); // empty
 
+    size_t idx = 0;
     while (1)
     {
+        printf("Sine In Out Table at index %u:\t%f", idx, graphics::easing::lut_sine_in_out[idx]);
+        if (++idx == 256)
+            idx = 0;
         tight_loop_contents();
     }
 
