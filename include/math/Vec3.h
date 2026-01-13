@@ -11,6 +11,12 @@ struct Vec3
     constexpr Vec3(D x, D y, D z) : x(x), y(y), z(z) {}
     constexpr Vec3() : x(0), y(0), z(0) {}
 
+    template<typename F>
+    inline operator Vec3<F>() const
+    {
+        return Vec3<F>{(F)x, (F)y, (F)z};
+    }
+
     Vec3 operator+(const Vec3& other) const;
     Vec3 operator-(const Vec3& other) const;
     Vec3 operator*(D scale) const;
