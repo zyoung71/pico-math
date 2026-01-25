@@ -12,6 +12,8 @@ int main()
 
     Vec3f v2 = (Vec3f)v;
 
+    Vec2u32 l;
+
     graphics::scanline_rasterization<uint32_t>(nullptr, 0, nullptr, nullptr); // empty
 
     size_t idx = 0;

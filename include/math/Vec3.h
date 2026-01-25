@@ -32,6 +32,13 @@ struct Vec3
 
     Vec3 Normalize() const;
     Vec3 Cross(const Vec3& other) const;
+
+    bool operator==(const Vec3& other) const;
+    bool operator!=(const Vec3& other) const;
+    bool operator<(const Vec3& other) const;
+    bool operator>(const Vec3& other) const;
+    bool operator<=(const Vec3& other) const;
+    bool operator>=(const Vec3& other) const;
 };
 
 #include "math/Vec3.h"

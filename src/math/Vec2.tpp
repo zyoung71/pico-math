@@ -76,3 +76,51 @@ Vec2<D> Vec2<D>::Normalize() const
     float len = Length();
     return {x / len, y / len};
 }
+
+template<typename D>
+bool Vec2<D>::operator==(const Vec2& other) const 
+{
+    return x == other.x && y == other.y;
+}
+
+template<typename D>
+bool Vec2<D>::operator!=(const Vec2& other) const 
+{
+    return x != other.x || y != other.y;
+}
+
+template<typename D>
+bool Vec2<D>::operator<(const Vec2& other) const 
+{
+    return Length() < other.Length();
+}
+
+template<typename D>
+bool Vec2<D>::operator>(const Vec2& other) const 
+{
+    return Length() > other.Length();
+}
+
+template<typename D>
+bool Vec2<D>::operator<=(const Vec2& other) const 
+{
+    return Length() <= other.Length();
+}
+
+template<typename D>
+bool Vec2<D>::operator>=(const Vec2& other) const 
+{
+    return Length() >= other.Length();
+}
+
+template<typename D>
+Vec2<D> operator*(D scale, const Vec2<D>& vec)
+{
+    return vec * scale;
+}
+
+template<typename D>
+Vec2<D> operator/(D scale, const Vec2<D>& vec)
+{
+    return Vec2<D>{scale / vec.x, scale / vec.y};
+}

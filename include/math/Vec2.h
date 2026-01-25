@@ -29,7 +29,19 @@ struct Vec2
     float Length() const;
     float Dot(const Vec2& other) const;
     Vec2 Normalize() const;
+
+    bool operator==(const Vec2& other) const;
+    bool operator!=(const Vec2& other) const;
+    bool operator<(const Vec2& other) const;
+    bool operator>(const Vec2& other) const;
+    bool operator<=(const Vec2& other) const;
+    bool operator>=(const Vec2& other) const;
 };
+
+template<typename D>
+Vec2<D> operator*(D scale, const Vec2<D>& vec);
+template<typename D>
+Vec2<D> operator/(D scale, const Vec2<D>& vec);
 
 #include <math/Vec2.tpp>
 
