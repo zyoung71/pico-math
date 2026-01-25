@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstdint>
+#include <functional>
 
 template<typename D>
 struct Vec2
@@ -42,6 +43,12 @@ template<typename D>
 Vec2<D> operator*(D scale, const Vec2<D>& vec);
 template<typename D>
 Vec2<D> operator/(D scale, const Vec2<D>& vec);
+
+template<typename D>
+struct std::hash<Vec2<D>>
+{
+    size_t operator()(const Vec2<D>& key) const;
+};
 
 #include <math/Vec2.tpp>
 

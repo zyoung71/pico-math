@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstdint>
+#include <functional>
 
 template<typename D>
 struct Vec3
@@ -39,6 +40,12 @@ struct Vec3
     bool operator>(const Vec3& other) const;
     bool operator<=(const Vec3& other) const;
     bool operator>=(const Vec3& other) const;
+};
+
+template<typename D>
+struct std::hash<Vec3<D>>
+{
+    size_t operator()(const Vec3<D>& key) const;
 };
 
 #include "math/Vec3.h"
