@@ -128,5 +128,5 @@ Vec2<D> operator/(D scale, const Vec2<D>& vec)
 template<typename D>
 size_t std::hash<Vec2<D>>::operator()(const Vec2<D>& key) const
 {
-    return std::hash<D>()(key.x) ^ (std::hash<D>(key.y) << 1);
+    return std::hash<D>()(key.x) ^ (std::hash<D>()(key.y) << 1);
 }

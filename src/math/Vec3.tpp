@@ -138,5 +138,5 @@ Vec3<D> operator/(D scale, const Vec3<D>& vec)
 template<typename D>
 size_t std::hash<Vec3<D>>::operator()(const Vec3<D>& key) const
 {
-    return ((std::hash<D>()(key.x) ^ (std::hash<D>()(key.y) << 1)) >> 1) ^ (std::hash<D>(key.z) << 1);
+    return ((std::hash<D>()(key.x) ^ (std::hash<D>()(key.y) << 1)) >> 1) ^ (std::hash<D>()(key.z) << 1);
 }
