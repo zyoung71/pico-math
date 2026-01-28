@@ -16,9 +16,10 @@ namespace graphics
     namespace easing
     {
         constexpr size_t lut_size = 256;
+        typedef std::array<float, lut_size> EasingFunctionLUT;
 
         typedef float(*LUTInit)(float);
-        consteval std::array<float, lut_size> make_lut(LUTInit init_cb)
+        consteval EasingFunctionLUT make_lut(LUTInit init_cb)
         {
             std::array<float, lut_size> lut;
             for (size_t i = 0; i < lut_size; i++)
@@ -76,7 +77,7 @@ namespace graphics
             return time * time * time + 1.f;
         }
 
-        constexpr float cubic_in_out(float time)
+        consteval float cubic_in_out(float time)
         {
             if (time < 0.5)
                 return 4.f * time * time * time;
