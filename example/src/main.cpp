@@ -4,6 +4,7 @@
 #include <math/Quat.h>
 #include <math/Graphics.h>
 #include <math/Vec3.h>
+#include <math/AABB.h>
 
 int main()
 {
@@ -13,6 +14,7 @@ int main()
     Vec3f v2 = (Vec3f)v;
 
     Vec2u32 l;
+    AABBi32 aabb;
 
     graphics::scanline_rasterization<uint32_t>(nullptr, 0, nullptr, nullptr); // empty
 
