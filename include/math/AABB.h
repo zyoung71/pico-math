@@ -9,12 +9,17 @@ struct AABB
     {
         struct
         {
-            D xmin, ymin, xmax, ymax;
-        };
+            D xmin, ymin;
+        }; 
+        Vec2<D> min;
+    };
+    union
+    {
         struct
         {
-            Vec2<D> min, max;
+            D xmax, ymax;
         };
+        Vec2<D> max;
     };
 
     constexpr inline AABB(D xmin, D ymin, D xmax, D ymax) : xmin(xmin), ymin(ymin), xmax(xmax), ymax(ymax) {}
