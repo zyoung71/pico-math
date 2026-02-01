@@ -22,6 +22,7 @@ struct AABB
         Vec2<D> max;
     };
 
+    constexpr inline AABB(const Vec2<D>& min, const Vec2<D>& max) : min(min), max(max) {}
     constexpr inline AABB(D xmin, D ymin, D xmax, D ymax) : xmin(xmin), ymin(ymin), xmax(xmax), ymax(ymax) {}
     constexpr inline AABB() : xmin(0), ymin(0), xmax(1), ymax(1) {}
 
