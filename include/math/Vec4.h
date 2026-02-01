@@ -47,7 +47,7 @@ struct std::hash<Vec4<D>>
     size_t operator()(const Vec4<D>& key) const;
 };
 
-#include "math/Vec4.h"
+#include "math/Vec4.tpp"
 
 typedef Vec4<float> Vec4f;
 typedef Vec4<double> Vec4d;

@@ -48,7 +48,7 @@ struct std::hash<Vec3<D>>
     size_t operator()(const Vec3<D>& key) const;
 };
 
-#include "math/Vec3.h"
+#include "math/Vec3.tpp"
 
 typedef Vec3<float> Vec3f;
 typedef Vec3<double> Vec3d;
