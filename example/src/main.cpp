@@ -16,6 +16,8 @@ int main()
     Vec2u32 l;
     AABBi32 aabb;
 
+    aabb.vec.w;
+
     graphics::scanline_rasterization<uint32_t>(nullptr, 0, nullptr, nullptr); // empty
 
     size_t idx = 0;

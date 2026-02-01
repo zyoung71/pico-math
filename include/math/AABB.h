@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Vec2.h"
+#include "Vec4.h"
 
 template<typename D>
 struct AABB
@@ -9,24 +10,27 @@ struct AABB
     {
         struct
         {
-            D xmin, ymin;
-        }; 
-        Vec2<D> min;
-    };
-    union
-    {
+            D xmin, ymin, xmax, ymax;
+        };
         struct
         {
-            D xmax, ymax;
+            Vec2<D> min, max;
         };
-        Vec2<D> max;
+        Vec4<D> vec;
     };
 
+    constexpr inline AABB(const Vec4<D>& vec) : vec(vec) {}
     constexpr inline AABB(const Vec2<D>& min, const Vec2<D>& max) : min(min), max(max) {}
     constexpr inline AABB(D xmin, D ymin, D xmax, D ymax) : xmin(xmin), ymin(ymin), xmax(xmax), ymax(ymax) {}
     constexpr inline AABB() : xmin(0), ymin(0), xmax(1), ymax(1) {}
 
     bool Intersects(const AABB& other) const;
+
+    template<typename F = D>
+    inline operator Vec4<F>() const
+    {
+        return (Vec4<F>)vec;
+    }
 };
 #include <math/AABB.tpp>
 
