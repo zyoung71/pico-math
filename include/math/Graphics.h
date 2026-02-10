@@ -30,6 +30,10 @@ namespace graphics
             return lut;
         }
 
+        /**
+         * Easing functions obtained from https://easings.net
+         */
+
         consteval float sine_in(float time)
         {
             return 1.f - std::cosf(std::numbers::pi * time * 0.5f);
@@ -91,25 +95,25 @@ namespace graphics
         // define this first for the IN function below it
         consteval float bounce_out(float time)
         {
-            constexpr float scale = 7.5625f;
-            constexpr float drop = 2.75f;
+            constexpr float n1 = 7.5625f;
+            constexpr float d1 = 2.75f;
 
-            if (time < 1.f / drop)
-                return scale * time * time;
-            else if (time < 2.f / drop)
+            if (time < 1.f / d1)
+                return n1 * time * time;
+            else if (time < 2.f / d1)
             {
-                time -= 1.5f / drop;
-                return scale * time * time + 0.75f;
+                time -= 1.5f / d1;
+                return n1 * time * time + 0.75f;
             }
-            else if (time < 2.5f / drop)
+            else if (time < 2.5f / d1)
             {
-                time -= 2.25f / drop;
-                return scale * time * time + 0.9375f;
+                time -= 2.25f / d1;
+                return n1 * time * time + 0.9375f;
             }
             else
             {
-                time -= 2.625f / drop;
-                return scale * time * time + 0.984375f;
+                time -= 2.625f / d1;
+                return n1 * time * time + 0.984375f;
             }
         }
 
@@ -128,13 +132,14 @@ namespace graphics
 
         consteval float elastic_in(float time)
         {
-            constexpr float tune = 2.f * std::numbers::pi / 3.f;
+            constexpr float c4 = 2.f * std::numbers::pi / 3.f;
+
             if (time == 0.f)
                 return 0.f;
             else if (time == 1.f)
                 return 1.f;
             else
-                return -std::powf(2.f, 10.f * (time - 1.f)) * std::sinf((time * 10.f - 10.75f) * tune);
+                return -std::powf(2.f, 10.f * (time - 1.f)) * std::sinf((time * 10.f - 10.75f) * c4);
         }
 
         consteval float elastic_out(float time)
@@ -164,32 +169,29 @@ namespace graphics
 
         consteval float back_in(float time)
         {
-            constexpr float tune = 1.5f;
-            time -= 1.f;
-            return 1.f + time * time * ((tune + 1.f) * time + tune);
+            constexpr float c1 = 1.70158f;
+            constexpr float c3 = c1 + 1.f;
+
+            return c3 * time * time * time - c1 * time * time;
         }
 
         consteval float back_out(float time)
         {
-            constexpr float tune = 1.5f;
-            return time * time * ((tune + 1.f) * time - tune);
+            constexpr float c1 = 1.70158f;
+            constexpr float c3 = c1 + 1.f;
+            time -= 1.f;
+
+            return 1.f + c3 * time * time * time + c1 * time * time;
         }
 
         consteval float back_in_out(float time)
         {
-            constexpr float tune = 2.5f;
+            constexpr float c1 = 1.70158f;
+            constexpr float c2 = c1 * 1.525f;
 
-            float rtime;
-            if (time < 0.5f)
-            {
-                rtime = 2.f * time;
-                return rtime * rtime * ((tune + 1.f) * rtime - tune) * 0.5f;
-            }
-            else
-            {
-                rtime = 2.f * time - 2.f;
-                return rtime * rtime * ((tune + 1.f) * rtime + tune + 2.f) * 0.5f;
-            }
+            return time < 0.5
+                ? (4.f * time * time * ((c2 + 1.f) * 2.f * time - c2)) / 2.f
+                : (std::powf(2.f * time - 2.f, 2.f) * ((c2 + 1.f) * (time * 2.f - 2.f) + c2) + 2.f) / 2.f;
         }
 
         // tables
