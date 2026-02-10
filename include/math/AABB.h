@@ -31,6 +31,11 @@ struct AABB
     {
         return (Vec4<F>)vec;
     }
+
+    inline Vec2<D> Size() const
+    {
+        return max - min;
+    }
 };
 #include <math/AABB.tpp>
 
