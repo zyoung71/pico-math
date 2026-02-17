@@ -1,9 +1,9 @@
 #pragma once
 
-#include <array>
 #include <cmath>
 #include <numbers>
 
+#include "MathFunctional.h"
 #include "Vec2.h"
 
 namespace graphics
@@ -15,13 +15,9 @@ namespace graphics
 
     namespace easing
     {
-        constexpr size_t lut_size = 256;
-        typedef std::array<float, lut_size> FunctionLUT;
-
-        typedef float(*LUTInit)(float);
-        consteval FunctionLUT make_lut(LUTInit init_cb)
+        consteval FunctionLUT<float> make_lut(MathFunction<float> init_cb)
         {
-            std::array<float, lut_size> lut;
+            FunctionLUT<float> lut;
             for (size_t i = 0; i < lut_size; i++)
             {
                 float t = i / static_cast<float>(lut_size - 1);
