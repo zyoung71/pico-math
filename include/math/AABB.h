@@ -36,6 +36,14 @@ struct AABB
     {
         return max - min;
     }
+    inline D Width() const
+    {
+        return xmax - xmin;
+    }
+    inline D Height() const
+    {
+        return ymax - ymin;
+    }
 };
 #include <math/AABB.tpp>
 
