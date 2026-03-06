@@ -13,38 +13,45 @@ struct Vec4
     constexpr Vec4() : x(0), y(0), z(0), w(0) {}
 
     template<typename F>
-    inline operator Vec4<F>() const
+    constexpr inline operator Vec4<F>() const
     {
         return Vec4<F>{(F)x, (F)y, (F)z, (F)w};
     }
 
-    Vec4 operator+(const Vec4& other) const;
-    Vec4 operator-(const Vec4& other) const;
-    Vec4 operator*(D scale) const;
-    Vec4 operator/(D scale) const;
+    constexpr Vec4 operator+(const Vec4& other) const;
+    constexpr Vec4 operator-(const Vec4& other) const;
+    constexpr Vec4 operator*(D scale) const;
+    constexpr Vec4 operator/(D scale) const;
 
-    Vec4& operator+=(const Vec4& other);
-    Vec4& operator-=(const Vec4& other);
-    Vec4& operator*=(D scale);
-    Vec4& operator/=(D scale);
+    constexpr Vec4& operator+=(const Vec4& other);
+    constexpr Vec4& operator-=(const Vec4& other);
+    constexpr Vec4& operator*=(D scale);
+    constexpr Vec4& operator/=(D scale);
 
-    float Length() const;
-    float Dot(const Vec4& other) const;
+    constexpr float Length() const;
+    constexpr float Dot(const Vec4& other) const;
+    constexpr Vec4 Normalize() const;
 
-    Vec4 Normalize() const;
+    constexpr D Min() const;
+    constexpr D Max() const;
 
-    bool operator==(const Vec4& other) const;
-    bool operator!=(const Vec4& other) const;
-    bool operator<(const Vec4& other) const;
-    bool operator>(const Vec4& other) const;
-    bool operator<=(const Vec4& other) const;
-    bool operator>=(const Vec4& other) const;
+    constexpr bool operator==(const Vec4& other) const;
+    constexpr bool operator!=(const Vec4& other) const;
+    constexpr bool operator<(const Vec4& other) const;
+    constexpr bool operator>(const Vec4& other) const;
+    constexpr bool operator<=(const Vec4& other) const;
+    constexpr bool operator>=(const Vec4& other) const;
 };
+
+template<typename D>
+constexpr Vec4<D> operator*(D scale, const Vec4<D>& vec);
+template<typename D>
+constexpr Vec4<D> operator/(D scale, const Vec4<D>& vec);
 
 template<typename D>
 struct std::hash<Vec4<D>>
 {
-    size_t operator()(const Vec4<D>& key) const;
+    constexpr size_t operator()(const Vec4<D>& key) const;
 };
 
 #include "math/Vec4.tpp"

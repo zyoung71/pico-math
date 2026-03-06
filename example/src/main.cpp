@@ -6,6 +6,13 @@
 #include <math/Vec3.h>
 #include <math/AABB.h>
 
+consteval Vec2f test()
+{
+    Vec2f v{4.f, 3.f};
+    v *= 3.f;
+    return v;
+}
+
 int main()
 {
     Quatf q;
@@ -15,6 +22,8 @@ int main()
 
     Vec2u32 l;
     AABBi32 aabb;
+
+    Vec2f vf = test();
 
     aabb.vec.w;
 

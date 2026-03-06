@@ -24,23 +24,23 @@ struct AABB
     constexpr inline AABB(D xmin, D ymin, D xmax, D ymax) : xmin(xmin), ymin(ymin), xmax(xmax), ymax(ymax) {}
     constexpr inline AABB() : xmin(0), ymin(0), xmax(1), ymax(1) {}
 
-    bool Intersects(const AABB& other) const;
+    constexpr bool Intersects(const AABB& other) const;
 
     template<typename F = D>
-    inline operator Vec4<F>() const
+    constexpr inline operator Vec4<F>() const
     {
         return (Vec4<F>)vec;
     }
 
-    inline Vec2<D> Size() const
+    constexpr inline Vec2<D> Size() const
     {
         return max - min;
     }
-    inline D Width() const
+    constexpr inline D Width() const
     {
         return xmax - xmin;
     }
-    inline D Height() const
+    constexpr inline D Height() const
     {
         return ymax - ymin;
     }

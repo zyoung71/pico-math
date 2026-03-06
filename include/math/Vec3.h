@@ -13,39 +13,46 @@ struct Vec3
     constexpr Vec3() : x(0), y(0), z(0) {}
 
     template<typename F>
-    inline operator Vec3<F>() const
+    constexpr inline operator Vec3<F>() const
     {
         return Vec3<F>{(F)x, (F)y, (F)z};
     }
 
-    Vec3 operator+(const Vec3& other) const;
-    Vec3 operator-(const Vec3& other) const;
-    Vec3 operator*(D scale) const;
-    Vec3 operator/(D scale) const;
+    constexpr Vec3 operator+(const Vec3& other) const;
+    constexpr Vec3 operator-(const Vec3& other) const;
+    constexpr Vec3 operator*(D scale) const;
+    constexpr Vec3 operator/(D scale) const;
 
-    Vec3& operator+=(const Vec3& other);
-    Vec3& operator-=(const Vec3& other);
-    Vec3& operator*=(D scale);
-    Vec3& operator/=(D scale);
+    constexpr Vec3& operator+=(const Vec3& other);
+    constexpr Vec3& operator-=(const Vec3& other);
+    constexpr Vec3& operator*=(D scale);
+    constexpr Vec3& operator/=(D scale);
 
-    float Length() const;
-    float Dot(const Vec3& other) const;
+    constexpr float Length() const;
+    constexpr float Dot(const Vec3& other) const;
+    constexpr Vec3 Normalize() const;
+    constexpr Vec3 Cross(const Vec3& other) const;
 
-    Vec3 Normalize() const;
-    Vec3 Cross(const Vec3& other) const;
+    constexpr D Min() const;
+    constexpr D Max() const;
 
-    bool operator==(const Vec3& other) const;
-    bool operator!=(const Vec3& other) const;
-    bool operator<(const Vec3& other) const;
-    bool operator>(const Vec3& other) const;
-    bool operator<=(const Vec3& other) const;
-    bool operator>=(const Vec3& other) const;
+    constexpr bool operator==(const Vec3& other) const;
+    constexpr bool operator!=(const Vec3& other) const;
+    constexpr bool operator<(const Vec3& other) const;
+    constexpr bool operator>(const Vec3& other) const;
+    constexpr bool operator<=(const Vec3& other) const;
+    constexpr bool operator>=(const Vec3& other) const;
 };
+
+template<typename D>
+constexpr Vec3<D> operator*(D scale, const Vec3<D>& vec);
+template<typename D>
+constexpr Vec3<D> operator/(D scale, const Vec3<D>& vec);
 
 template<typename D>
 struct std::hash<Vec3<D>>
 {
-    size_t operator()(const Vec3<D>& key) const;
+    constexpr size_t operator()(const Vec3<D>& key) const;
 };
 
 #include "math/Vec3.tpp"

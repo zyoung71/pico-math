@@ -12,42 +12,45 @@ struct Vec2
     constexpr inline Vec2() : x(0), y(0) {}
 
     template<typename F>
-    inline operator Vec2<F>() const
+    constexpr inline operator Vec2<F>() const
     {
         return Vec2<F>{(F)x, (F)y};
     }
 
-    Vec2 operator+(const Vec2& other) const;
-    Vec2 operator-(const Vec2& other) const;
-    Vec2 operator*(D scale) const;
-    Vec2 operator/(D scale) const;
+    constexpr Vec2 operator+(const Vec2& other) const;
+    constexpr Vec2 operator-(const Vec2& other) const;
+    constexpr Vec2 operator*(D scale) const;
+    constexpr Vec2 operator/(D scale) const;
 
-    Vec2& operator+=(const Vec2& other);
-    Vec2& operator-=(const Vec2& other);
-    Vec2& operator*=(D scale);
-    Vec2& operator/=(D scale);
+    constexpr Vec2& operator+=(const Vec2& other);
+    constexpr Vec2& operator-=(const Vec2& other);
+    constexpr Vec2& operator*=(D scale);
+    constexpr Vec2& operator/=(D scale);
 
-    float Length() const;
-    float Dot(const Vec2& other) const;
-    Vec2 Normalize() const;
+    constexpr float Length() const;
+    constexpr float Dot(const Vec2& other) const;
+    constexpr Vec2 Normalize() const;
 
-    bool operator==(const Vec2& other) const;
-    bool operator!=(const Vec2& other) const;
-    bool operator<(const Vec2& other) const;
-    bool operator>(const Vec2& other) const;
-    bool operator<=(const Vec2& other) const;
-    bool operator>=(const Vec2& other) const;
+    constexpr D Min() const;
+    constexpr D Max() const;
+
+    constexpr bool operator==(const Vec2& other) const;
+    constexpr bool operator!=(const Vec2& other) const;
+    constexpr bool operator<(const Vec2& other) const;
+    constexpr bool operator>(const Vec2& other) const;
+    constexpr bool operator<=(const Vec2& other) const;
+    constexpr bool operator>=(const Vec2& other) const;
 };
 
 template<typename D>
-Vec2<D> operator*(D scale, const Vec2<D>& vec);
+constexpr Vec2<D> operator*(D scale, const Vec2<D>& vec);
 template<typename D>
-Vec2<D> operator/(D scale, const Vec2<D>& vec);
+constexpr Vec2<D> operator/(D scale, const Vec2<D>& vec);
 
 template<typename D>
 struct std::hash<Vec2<D>>
 {
-    size_t operator()(const Vec2<D>& key) const;
+    constexpr size_t operator()(const Vec2<D>& key) const;
 };
 
 #include <math/Vec2.tpp>

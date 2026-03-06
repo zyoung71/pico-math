@@ -3,31 +3,31 @@
 #include <cmath>
 
 template<typename D>
-Vec3<D> Vec3<D>::operator+(const Vec3<D>& other) const
+constexpr Vec3<D> Vec3<D>::operator+(const Vec3<D>& other) const
 {
     return {x+other.x, y+other.y, z+other.z};
 }
 
 template<typename D>
-Vec3<D> Vec3<D>::operator-(const Vec3<D>& other) const
+constexpr Vec3<D> Vec3<D>::operator-(const Vec3<D>& other) const
 {
     return {x-other.x, y-other.y, z-other.z};
 }
 
 template<typename D>
-Vec3<D> Vec3<D>::operator*(D scale) const
+constexpr Vec3<D> Vec3<D>::operator*(D scale) const
 {
     return {x*scale, y*scale, z*scale};
 }
 
 template<typename D>
-Vec3<D> Vec3<D>::operator/(D scale) const
+constexpr Vec3<D> Vec3<D>::operator/(D scale) const
 {
     return {x/scale, y/scale, z/scale};
 }
 
 template<typename D>
-Vec3<D>& Vec3<D>::operator+=(const Vec3<D>& other)
+constexpr Vec3<D>& Vec3<D>::operator+=(const Vec3<D>& other)
 {
     x += other.x;
     y += other.y;
@@ -36,7 +36,7 @@ Vec3<D>& Vec3<D>::operator+=(const Vec3<D>& other)
 }
 
 template<typename D>
-Vec3<D>& Vec3<D>::operator-=(const Vec3<D>& other)
+constexpr Vec3<D>& Vec3<D>::operator-=(const Vec3<D>& other)
 {
     x -= other.x;
     y -= other.y;
@@ -45,7 +45,7 @@ Vec3<D>& Vec3<D>::operator-=(const Vec3<D>& other)
 }
 
 template<typename D>
-Vec3<D>& Vec3<D>::operator*=(D scale)
+constexpr Vec3<D>& Vec3<D>::operator*=(D scale)
 {
     x *= scale;
     y *= scale;
@@ -54,7 +54,7 @@ Vec3<D>& Vec3<D>::operator*=(D scale)
 }
 
 template<typename D>
-Vec3<D>& Vec3<D>::operator/=(D scale)
+constexpr Vec3<D>& Vec3<D>::operator/=(D scale)
 {
     x /= scale;
     y /= scale;
@@ -63,80 +63,92 @@ Vec3<D>& Vec3<D>::operator/=(D scale)
 }
 
 template<typename D>
-float Vec3<D>::Length() const
+constexpr float Vec3<D>::Length() const
 {
     return std::sqrt(x*x+y*y+z*z);
 }
 
 template<typename D>
-float Vec3<D>::Dot(const Vec3<D>& other) const
+constexpr float Vec3<D>::Dot(const Vec3<D>& other) const
 {
     return x*other.x + y*other.y + z*other.z;
 }
 
 template<typename D>
-Vec3<D> Vec3<D>::Normalize() const
+constexpr Vec3<D> Vec3<D>::Normalize() const
 {
     float len = Length();
     return {x / len, y / len, z / len};
 }
 
 template<typename D>
-Vec3<D> Vec3<D>::Cross(const Vec3<D>& other) const
+constexpr Vec3<D> Vec3<D>::Cross(const Vec3<D>& other) const
 {
     return Vec3<D>{y*other.z - z*other.y, z*other.x - x*other.z, x*other.y - y*other.x};
 }
 
 template<typename D>
-bool Vec3<D>::operator==(const Vec3& other) const 
+constexpr D Vec3<D>::Min() const
+{
+    return std::min(x, std::min(y, z));
+}
+
+template<typename D>
+constexpr D Vec3<D>::Max() const
+{
+    return std::max(x, std::max(y, z));
+}
+
+template<typename D>
+constexpr bool Vec3<D>::operator==(const Vec3& other) const 
 {
     return x == other.x && y == other.y && z == other.z;
 }
 
 template<typename D>
-bool Vec3<D>::operator!=(const Vec3& other) const 
+constexpr bool Vec3<D>::operator!=(const Vec3& other) const 
 {
     return x != other.x || y != other.y || z != other.z;
 }
 
 template<typename D>
-bool Vec3<D>::operator<(const Vec3& other) const 
+constexpr bool Vec3<D>::operator<(const Vec3& other) const 
 {
     return Length() < other.Length();
 }
 
 template<typename D>
-bool Vec3<D>::operator>(const Vec3& other) const 
+constexpr bool Vec3<D>::operator>(const Vec3& other) const 
 {
     return Length() > other.Length();
 }
 
 template<typename D>
-bool Vec3<D>::operator<=(const Vec3& other) const 
+constexpr bool Vec3<D>::operator<=(const Vec3& other) const 
 {
     return Length() <= other.Length();
 }
 
 template<typename D>
-bool Vec3<D>::operator>=(const Vec3& other) const 
+constexpr bool Vec3<D>::operator>=(const Vec3& other) const 
 {
     return Length() >= other.Length();
 }
 
 template<typename D>
-Vec3<D> operator*(D scale, const Vec3<D>& vec)
+constexpr Vec3<D> operator*(D scale, const Vec3<D>& vec)
 {
     return vec * scale;
 }
 
 template<typename D>
-Vec3<D> operator/(D scale, const Vec3<D>& vec)
+constexpr Vec3<D> operator/(D scale, const Vec3<D>& vec)
 {
     return Vec3<D>{scale / vec.x, scale / vec.y, scale / vec.z};
 }
 
 template<typename D>
-size_t std::hash<Vec3<D>>::operator()(const Vec3<D>& key) const
+constexpr size_t std::hash<Vec3<D>>::operator()(const Vec3<D>& key) const
 {
     return ((std::hash<D>()(key.x) ^ (std::hash<D>()(key.y) << 1)) >> 1) ^ (std::hash<D>()(key.z) << 1);
 }
