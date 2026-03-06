@@ -9,8 +9,9 @@ struct Vec4
 
     D x, y, z, w;
 
-    constexpr Vec4(D x, D y, D z, D w) : x(x), y(y), z(z), w(w) {}
-    constexpr Vec4() : x(0), y(0), z(0), w(0) {}
+    constexpr inline Vec4(D x, D y, D z, D w) : x(x), y(y), z(z), w(w) {}
+    constexpr inline Vec4() : x(0), y(0), z(0), w(0) {}
+    constexpr inline Vec4(D v) : x(v), y(v), z(v), w(v) {}
 
     template<typename F>
     constexpr inline operator Vec4<F>() const

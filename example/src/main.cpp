@@ -25,6 +25,8 @@ int main()
 
     Vec2f vf = test();
 
+    vf = 1.f;
+
     aabb.vec.w;
 
     graphics::scanline_rasterization<uint32_t>(nullptr, 0, nullptr, nullptr); // empty

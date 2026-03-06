@@ -9,8 +9,9 @@ struct Vec3
 
     D x, y, z;
 
-    constexpr Vec3(D x, D y, D z) : x(x), y(y), z(z) {}
-    constexpr Vec3() : x(0), y(0), z(0) {}
+    constexpr inline Vec3(D x, D y, D z) : x(x), y(y), z(z) {}
+    constexpr inline Vec3() : x(0), y(0), z(0) {}
+    constexpr inline Vec3(D v) : x(v), y(v), z(v) {}
 
     template<typename F>
     constexpr inline operator Vec3<F>() const

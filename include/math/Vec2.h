@@ -10,6 +10,7 @@ struct Vec2
 
     constexpr inline Vec2(D x, D y) : x(x), y(y) {}
     constexpr inline Vec2() : x(0), y(0) {}
+    constexpr inline Vec2(D v) : x(v), y(v) {}
 
     template<typename F>
     constexpr inline operator Vec2<F>() const
