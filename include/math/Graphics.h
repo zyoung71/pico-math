@@ -8,11 +8,6 @@
 
 namespace graphics
 {
-    typedef void (*DrawCallback)(Vec2i32, void*);
-    
-    template<typename D>
-    void scanline_rasterization(const Vec2<D>* points, size_t points_count, DrawCallback callback, void* usr = nullptr);
-
     namespace easing
     {
         consteval FunctionLUT<float> make_lut(MathFunction<float> init_cb)
@@ -211,4 +206,3 @@ namespace graphics
         constexpr auto lut_back_in_out = make_lut(&back_in_out);
     }
 }
-#include <math/Graphics.tpp>
