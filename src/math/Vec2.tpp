@@ -15,6 +15,18 @@ constexpr Vec2<D> Vec2<D>::operator-(const Vec2<D>& other) const
 }
 
 template<typename D>
+constexpr Vec2<D> Vec2<D>::operator*(const Vec2<D>& other) const
+{
+    return {x*other.x, y*other.y};
+}
+
+template<typename D>
+constexpr Vec2<D> Vec2<D>::operator/(const Vec2<D>& other) const
+{
+    return {x/other.x, y/other.y};
+}
+
+template<typename D>
 constexpr Vec2<D> Vec2<D>::operator*(D scale) const
 {
     return {x*scale, y*scale};
@@ -39,6 +51,22 @@ constexpr Vec2<D>& Vec2<D>::operator-=(const Vec2<D>& other)
 {
     x -= other.x;
     y -= other.y;
+    return *this;
+}
+
+template<typename D>
+constexpr Vec2<D>& Vec2<D>::operator*=(const Vec2<D>& other)
+{
+    x *= other.x;
+    y *= other.y;
+    return *this;
+}
+
+template<typename D>
+constexpr Vec2<D>& Vec2<D>::operator/=(const Vec2<D>& other)
+{
+    x /= other.x;
+    y /= other.y;
     return *this;
 }
 

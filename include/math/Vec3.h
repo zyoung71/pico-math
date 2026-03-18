@@ -11,7 +11,7 @@ struct Vec3
 
     constexpr inline Vec3(D x, D y, D z) : x(x), y(y), z(z) {}
     constexpr inline Vec3() : x(0), y(0), z(0) {}
-    constexpr inline Vec3(D v) : x(v), y(v), z(v) {}
+    constexpr explicit inline Vec3(D v) : x(v), y(v), z(v) {}
 
     template<typename F>
     constexpr inline operator Vec3<F>() const
@@ -21,11 +21,15 @@ struct Vec3
 
     constexpr Vec3 operator+(const Vec3& other) const;
     constexpr Vec3 operator-(const Vec3& other) const;
+    constexpr Vec3 operator*(const Vec3& other) const;
+    constexpr Vec3 operator/(const Vec3& other) const;
     constexpr Vec3 operator*(D scale) const;
     constexpr Vec3 operator/(D scale) const;
 
     constexpr Vec3& operator+=(const Vec3& other);
     constexpr Vec3& operator-=(const Vec3& other);
+    constexpr Vec3& operator*=(const Vec3& other);
+    constexpr Vec3& operator/=(const Vec3& other);
     constexpr Vec3& operator*=(D scale);
     constexpr Vec3& operator/=(D scale);
 

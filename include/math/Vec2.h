@@ -10,7 +10,7 @@ struct Vec2
 
     constexpr inline Vec2(D x, D y) : x(x), y(y) {}
     constexpr inline Vec2() : x(0), y(0) {}
-    constexpr inline Vec2(D v) : x(v), y(v) {}
+    constexpr explicit inline Vec2(D v) : x(v), y(v) {}
 
     template<typename F>
     constexpr inline operator Vec2<F>() const
@@ -20,11 +20,15 @@ struct Vec2
 
     constexpr Vec2 operator+(const Vec2& other) const;
     constexpr Vec2 operator-(const Vec2& other) const;
+    constexpr Vec2 operator*(const Vec2& other) const;
+    constexpr Vec2 operator/(const Vec2& other) const;
     constexpr Vec2 operator*(D scale) const;
     constexpr Vec2 operator/(D scale) const;
 
     constexpr Vec2& operator+=(const Vec2& other);
     constexpr Vec2& operator-=(const Vec2& other);
+    constexpr Vec2& operator*=(const Vec2& other);
+    constexpr Vec2& operator/=(const Vec2& other);
     constexpr Vec2& operator*=(D scale);
     constexpr Vec2& operator/=(D scale);
 

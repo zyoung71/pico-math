@@ -15,6 +15,18 @@ constexpr Vec3<D> Vec3<D>::operator-(const Vec3<D>& other) const
 }
 
 template<typename D>
+constexpr Vec3<D> Vec3<D>::operator*(const Vec3<D>& other) const
+{
+    return {x*other.x, y*other.y, z*other.z};
+}
+
+template<typename D>
+constexpr Vec3<D> Vec3<D>::operator/(const Vec3<D>& other) const
+{
+    return {x/other.x, y/other.y, z/other.z};
+}
+
+template<typename D>
 constexpr Vec3<D> Vec3<D>::operator*(D scale) const
 {
     return {x*scale, y*scale, z*scale};
@@ -41,6 +53,24 @@ constexpr Vec3<D>& Vec3<D>::operator-=(const Vec3<D>& other)
     x -= other.x;
     y -= other.y;
     z -= other.z;
+    return *this;
+}
+
+template<typename D>
+constexpr Vec3<D>& Vec3<D>::operator*=(const Vec3<D>& other)
+{
+    x *= other.x;
+    y *= other.y;
+    z *= other.z;
+    return *this;
+}
+
+template<typename D>
+constexpr Vec3<D>& Vec3<D>::operator/=(const Vec3<D>& other)
+{
+    x /= other.x;
+    y /= other.y;
+    z /= other.z;
     return *this;
 }
 

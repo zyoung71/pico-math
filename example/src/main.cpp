@@ -10,6 +10,7 @@ consteval Vec2f test()
 {
     Vec2f v{4.f, 3.f};
     v *= 3.f;
+    v *= Vec2f{3, 3};
     return v;
 }
 
@@ -25,7 +26,7 @@ int main()
 
     Vec2f vf = test();
 
-    vf = 1.f;
+    vf = Vec2f(1.f);
 
     aabb.vec.w;
     size_t idx = 0;
