@@ -34,7 +34,11 @@ struct Vec2
 
     constexpr float Length() const;
     constexpr float Dot(const Vec2& other) const;
-    constexpr Vec2 Normalize() const;
+
+    constexpr Vec2& Normalize();
+    constexpr Vec2& Round();
+    constexpr Vec2& Floor();
+    constexpr Vec2& Ceil();
 
     constexpr D Min() const;
     constexpr D Max() const;
@@ -45,6 +49,11 @@ struct Vec2
     constexpr bool operator>(const Vec2& other) const;
     constexpr bool operator<=(const Vec2& other) const;
     constexpr bool operator>=(const Vec2& other) const;
+
+    static constexpr Vec2 Normalize(const Vec2& v);
+    static constexpr Vec2 Round(const Vec2& v);
+    static constexpr Vec2 Floor(const Vec2& v);
+    static constexpr Vec2 Ceil(const Vec2& v);
 };
 
 template<typename D>

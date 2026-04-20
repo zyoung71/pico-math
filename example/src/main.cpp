@@ -11,7 +11,7 @@ consteval Vec2f test()
     Vec2f v{4.f, 3.f};
     v *= 3.f;
     v *= Vec2f{3, 3};
-    return v;
+    return Vec2f::Round(v);
 }
 
 int main()

@@ -105,10 +105,13 @@ constexpr float Vec3<D>::Dot(const Vec3<D>& other) const
 }
 
 template<typename D>
-constexpr Vec3<D> Vec3<D>::Normalize() const
+constexpr Vec3<D>& Vec3<D>::Normalize()
 {
     float len = Length();
-    return {x / len, y / len, z / len};
+    x /= len;
+    y /= len;
+    z /= len;
+    return *this;
 }
 
 template<typename D>
@@ -181,4 +184,11 @@ template<typename D>
 constexpr size_t std::hash<Vec3<D>>::operator()(const Vec3<D>& key) const
 {
     return ((std::hash<D>()(key.x) ^ (std::hash<D>()(key.y) << 1)) >> 1) ^ (std::hash<D>()(key.z) << 1);
+}
+
+template<typename D>
+constexpr Vec3<D> Vec3<D>::Normalize(const Vec3<D>& v)
+{
+    float len = v.Length();
+    return Vec3<D>{v.x / len, v.y / len, v.z / len};
 }

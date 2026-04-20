@@ -35,7 +35,8 @@ struct Vec4
 
     constexpr float Length() const;
     constexpr float Dot(const Vec4& other) const;
-    constexpr Vec4 Normalize() const;
+
+    constexpr Vec4& Normalize();
 
     constexpr D Min() const;
     constexpr D Max() const;
@@ -46,6 +47,8 @@ struct Vec4
     constexpr bool operator>(const Vec4& other) const;
     constexpr bool operator<=(const Vec4& other) const;
     constexpr bool operator>=(const Vec4& other) const;
+
+    static constexpr Vec4 Normalize(const Vec4& v);
 };
 
 template<typename D>
