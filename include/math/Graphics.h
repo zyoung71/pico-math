@@ -188,7 +188,7 @@ namespace graphics
         // tables
         constexpr auto lut_sine_in = make_lut(&sine_in);
         constexpr auto lut_sine_out = make_lut(&sine_out);
-        constexpr auto lut_sine_in_out = make_lut(&sine_out);
+        constexpr auto lut_sine_in_out = make_lut(&sine_in_out);
         constexpr auto lut_quad_in = make_lut(&quad_in);
         constexpr auto lut_quad_out = make_lut(&quad_out);
         constexpr auto lut_quad_in_out = make_lut(&quad_in_out);
