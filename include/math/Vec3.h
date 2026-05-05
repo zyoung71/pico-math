@@ -6,6 +6,7 @@
 template<typename D>
 struct Vec3
 {
+    using FloatType = std::conditional_t<sizeof(D) >= 8, double, float>;
 
     D x, y, z;
 
@@ -33,8 +34,8 @@ struct Vec3
     constexpr Vec3& operator*=(D scale);
     constexpr Vec3& operator/=(D scale);
 
-    constexpr float Length() const;
-    constexpr float Dot(const Vec3& other) const;
+    constexpr FloatType Length() const;
+    constexpr FloatType Dot(const Vec3& other) const;
     constexpr Vec3 Cross(const Vec3& other) const;
 
     constexpr Vec3& Normalize();

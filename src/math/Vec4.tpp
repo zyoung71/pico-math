@@ -99,13 +99,13 @@ constexpr Vec4<D>& Vec4<D>::operator/=(D scale)
 }
 
 template<typename D>
-constexpr float Vec4<D>::Length() const
+constexpr Vec4<D>::FloatType Vec4<D>::Length() const
 {
     return std::sqrt(x*x+y*y+z*z+w*w);
 }
 
 template<typename D>
-constexpr float Vec4<D>::Dot(const Vec4<D>& other) const
+constexpr Vec4<D>::FloatType Vec4<D>::Dot(const Vec4<D>& other) const
 {
     return x*other.x + y*other.y + z*other.z + w*other.w;
 }

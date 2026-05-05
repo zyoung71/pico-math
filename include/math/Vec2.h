@@ -6,6 +6,8 @@
 template<typename D>
 struct Vec2
 {
+    using FloatType = std::conditional_t<sizeof(D) >= 8, double, float>;
+
     D x, y;
 
     constexpr inline Vec2(D x, D y) : x(x), y(y) {}
@@ -32,8 +34,8 @@ struct Vec2
     constexpr Vec2& operator*=(D scale);
     constexpr Vec2& operator/=(D scale);
 
-    constexpr float Length() const;
-    constexpr float Dot(const Vec2& other) const;
+    constexpr FloatType Length() const;
+    constexpr FloatType Dot(const Vec2& other) const;
 
     constexpr Vec2& Normalize();
     constexpr Vec2& Round();

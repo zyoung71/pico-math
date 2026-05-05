@@ -93,13 +93,13 @@ constexpr Vec3<D>& Vec3<D>::operator/=(D scale)
 }
 
 template<typename D>
-constexpr float Vec3<D>::Length() const
+constexpr Vec3<D>::FloatType Vec3<D>::Length() const
 {
     return std::sqrt(x*x+y*y+z*z);
 }
 
 template<typename D>
-constexpr float Vec3<D>::Dot(const Vec3<D>& other) const
+constexpr Vec3<D>::FloatType Vec3<D>::Dot(const Vec3<D>& other) const
 {
     return x*other.x + y*other.y + z*other.z;
 }

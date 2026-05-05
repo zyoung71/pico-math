@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 #include <math/Quat.h>
-#include <math/Graphics.h>
+#include <math/Easing.h>
 #include <math/Vec3.h>
 #include <math/AABB.h>
 
@@ -25,14 +25,17 @@ int main()
     AABBi32 aabb;
 
     Vec2f vf = test();
-
+    Vec2d vd;
     vf = Vec2f(1.f);
+
+    auto vfl = vf.Length();
+    auto vdl = vd.Length();
 
     aabb.vec.w;
     size_t idx = 0;
     while (1)
     {
-        printf("Sine In Out Table at index %u:\t%f", idx, graphics::easing::lut_sine_in_out[idx]);
+        printf("Sine In Out Table at index %u:\t%f", idx, easing::lut_sine_in_out[idx]);
         if (++idx == 256)
             idx = 0;
         tight_loop_contents();
